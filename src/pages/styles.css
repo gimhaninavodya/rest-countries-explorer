@@ -1,0 +1,25 @@
+/* Styles */
+
+/* CountryCard */
+.hover-shadow:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+}
+  
+/* CountryDetail */
+.custom-spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid rgba(0, 8, 16, 0.2);
+    border-top: 5px solid #001224;
+    border-radius: 50%;
+    animation: spin 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(0, 18, 36, 0.4);
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  
