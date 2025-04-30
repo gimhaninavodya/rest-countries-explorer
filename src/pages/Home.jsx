@@ -18,7 +18,7 @@ function Home({ countries, loading, searchTerm, selectedRegion, onRegionChange }
     : [];
 
   // Filter countries
-  const filteredCountries = countries.filter((country) => {
+  const filteredCountries = Array.isArray(countries) ? countries.filter((country) => {
     const matchesSearch = country.name.common
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -37,8 +37,9 @@ function Home({ countries, loading, searchTerm, selectedRegion, onRegionChange }
       if (selectedPopulation === "large") return country.population > 50_000_000 && country.population <= 100_000_000;
       if (selectedPopulation === "xlarge") return country.population > 100_000_000;
     })();
+
     return matchesSearch && matchesRegion && matchesLanguage && matchesPopulation;
-  });
+}) : [];
 
   return (
     <div className="container py-4">
