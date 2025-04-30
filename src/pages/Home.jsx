@@ -7,11 +7,15 @@ function Home({ countries, loading, searchTerm, selectedRegion, onRegionChange }
   const [selectedPopulation, setSelectedPopulation] = useState("");
 
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania", "Antarctic"];
-  const allLanguages = Array.from(
-    new Set(
-      countries.flatMap((c) => (c.languages ? Object.values(c.languages) : []))
-    )
-  );
+
+  // Safe check: If countries exist, map languages; otherwise empty array
+  const allLanguages = countries && countries.length > 0
+    ? Array.from(
+        new Set(
+          countries.flatMap((c) => (c.languages ? Object.values(c.languages) : []))
+        )
+      )
+    : [];
 
   // Filter countries
   const filteredCountries = countries.filter((country) => {
